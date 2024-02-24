@@ -7,9 +7,14 @@ export default function Name() {
         <h1>What's your name?</h1>
         <p>Enter the name you use in real life</p>
       </div>
-      <input type="text" placeholder="firstname" />
-      <input type="text" placeholder="middlename" />
-      <input type="text" placeholder="surname" />
+      <div className={style.input}>
+      <input type="text" placeholder="First name" />
+      <input type="text" placeholder="Middle name" />
+      <input type="text" placeholder="Surname" />
+      <br/>
+      <button className={style.button}>Next</button>
+      </div>
+      <h3>I already have an account</h3>
     </div>
   );
 }
