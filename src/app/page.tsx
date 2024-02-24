@@ -1,10 +1,9 @@
-import Product from "./navbar/home";
+import Name from "./navbar/name";
 
 export default function Home() {
   return (
     <main>
-      hello world
-     <Product/>
+     <Name/>
          
     </main>
   );
