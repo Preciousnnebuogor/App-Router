@@ -51,7 +51,7 @@ const handleSubmit = (e) => {
         <button
           className={style.button}
           onClick={() => {
-            router.push("/");
+            router.push("/date");
           }}
         >
           Next
