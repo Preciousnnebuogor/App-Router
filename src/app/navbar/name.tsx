@@ -9,15 +9,15 @@ export default function Name() {
     middlename: "",
     surname: "",
   });
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     const name = e.target.name;
     const value = e.target.value;
     setData({ ...data, [name]: value });
   };
-const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Form hs been submitted")
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form hs been submitted");
+  };
 
   return (
     <div className={style.body}>

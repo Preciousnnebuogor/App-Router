@@ -1,8 +1,13 @@
 "use client";
 import style from "./date.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+
 export default function DateOfBirth() {
+const router = useRouter()
+
   const [data, setData] = useState({ date: "" });
   const handleChange = (e: any) => {
     const name = e.target.name;
@@ -32,7 +37,7 @@ export default function DateOfBirth() {
           onChange={handleChange}
         />
         <br />
-        <button className={style.button}>Next</button>
+        <button className={style.button} onClick={() => router.push("/gender") } >Next</button>
       </form>
       </div>
   );

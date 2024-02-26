@@ -1,11 +1,9 @@
-import DateOfBirth from "./DOB/date";
+import Gender from "./gender/page";
 import Name from "./navbar/name";
 export default function Home() {
   return (
     <main>
-      
-      <DateOfBirth/>
-    
+      <Name/>
     </main>
   );
 }
