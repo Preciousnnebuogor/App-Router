@@ -14,7 +14,7 @@ export default function Name() {
     const value = e.target.value;
     setData({ ...data, [name]: value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     console.log("Form hs been submitted");
   };

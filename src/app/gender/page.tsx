@@ -1,6 +1,12 @@
 "use client";
 import style from "./gender.module.scss";
+import {useState} from "react"
+import { useRouter } from "next/navigation";
 export default function Gender() {
+
+    const router = useRouter()
+
+    const [data,setData] = useState()
   return (
     <div className={style.body}>
       <div className={style.text}>
@@ -26,7 +32,7 @@ export default function Gender() {
         </div>
       </div>
 
-      <button className={style.button}>Next</button>
+      <button className={style.button} onClick={() => {router.push("/contact")}}>Next</button>
     </div>
   );
 }
