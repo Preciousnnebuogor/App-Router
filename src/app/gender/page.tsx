@@ -14,6 +14,10 @@ export default function Gender() {
         setGender({...gender, [name]: value})
     }
 
+    const handleSubmit = (e:any) => {
+        e.preventDefault()
+    }
+
   return (
     <div className={style.body}>
       <div className={style.text}>
@@ -21,7 +25,7 @@ export default function Gender() {
         <h4>You can change who see your gender on your profile later.</h4>
       </div>
 
-      <div className={style.table}>
+      <div className={style.table} onSubmit={handleSubmit}>
         <div className={style.form}>
           <p>Female</p>
           <input type="radio" name="gender" value="female"
@@ -44,9 +48,8 @@ export default function Gender() {
            onChange={handleChange} />
         </div>
 
-      </div>
-
       <button className={style.button} onClick={() => {router.push("/contact")}}>Next</button>
+    </div>
     </div>
   );
 }
