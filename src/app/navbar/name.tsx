@@ -58,7 +58,6 @@ export default function Name() {
         </button>
       </div>
 
-      <h3>I already have an account</h3>
     </div>
   );
 }
