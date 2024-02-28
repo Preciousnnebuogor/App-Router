@@ -1,22 +1,22 @@
 "use client";
+import { useForm } from "react-hook-form";
 import style from "./gender.module.scss";
-import {useState} from "react"
 import { useRouter } from "next/navigation";
+import { Schema } from "./yupSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 export default function Gender() {
+  const router = useRouter();
 
-    const router = useRouter()
-
-    const [gender,setGender] = useState({});
-
-    const handleChange = (e:any)=>{
-        const name = e.target.name;
-        const value = e.target.value;
-        setGender({...gender, [name]: value})
-    }
-
-    const handleSubmit = (e:any) => {
-        e.preventDefault()
-    }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ resolver: yupResolver(Schema) });
+  const onSubmitHandler = (data: any) => {
+    console.log({ data });
+    router.push("/password");
+  };
 
   return (
     <div className={style.body}>
@@ -25,17 +25,15 @@ export default function Gender() {
         <h4>You can change who see your gender on your profile later.</h4>
       </div>
 
-      <div className={style.table} onSubmit={handleSubmit}>
+      <form className={style.table} onSubmit={handleSubmit(onSubmitHandler)}>
         <div className={style.form}>
           <p>Female</p>
-          <input type="radio" name="gender" value="female"
-           onChange={handleChange}/>
+          <input type="radio" required {...register("gender")} />
         </div>
 
         <div className={style.form}>
           <p>Male</p>
-          <input type="radio" name="gender" value="male"
-           onChange={handleChange} />
+          <input type="radio" required {...register("gender")} />
         </div>
 
         <h3>More options</h3>
@@ -44,12 +42,11 @@ export default function Gender() {
             Select "More options" to choose another gender or if you'd rather
             not say.
           </h4>
-          <input type="radio" name="gender" value="other"
-           onChange={handleChange} />
+          <input type="radio" required {...register("gender")} />
         </div>
 
-      <button className={style.button} onClick={() => {router.push("/contact")}}>Next</button>
-    </div>
+        <button className={style.button}>Next</button>
+      </form>
     </div>
   );
 }
