@@ -1,14 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
 import style from "./name.module.scss";
-import { useState } from "react";
-import { Schema } from "./schema";
+import { Schema } from "./yupSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 export default function Name() {
   const router = useRouter();
-
-  const [data, setData] = useState();
 
   const {
     register,
@@ -18,7 +15,7 @@ export default function Name() {
   } = useForm({ resolver: yupResolver(Schema) });
   const onSubmitHandler = (data: any) => {
     console.log({ data });
-    router.push("/date")
+    router.push("/date");
   };
 
   return (
@@ -50,10 +47,7 @@ export default function Name() {
         />
         <p>{errors.surname?.message}</p>
         <br />
-        <button
-          className={style.button}
-          type="submit"
-        >
+        <button className={style.button} type="submit">
           Next
         </button>
       </form>

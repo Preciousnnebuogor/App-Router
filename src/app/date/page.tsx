@@ -1,28 +1,30 @@
 "use client";
+import { yupResolver } from "@hookform/resolvers/yup";
 import style from "./date.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Schema } from "./yupSchema";
+
 
 
 export default function DateOfBirth() {
 const router = useRouter()
 
-  const [data, setData] = useState({ date: "" });
-  const handleChange = (e: any) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setData({ ...data, [name]: value });
-  };
-
-  const handleSubmit = (e:any) => {
-    e.preventDefault()
-    console.log("Form hs been submitted")
-}
+const {
+  register,
+  handleSubmit,
+  formState: { errors },
+  reset,
+} = useForm({ resolver: yupResolver(Schema) });
+const onSubmitHandler = (data: any) => {
+  console.log({ data });
+  router.push("/gender");
+};
 
   return (
     <div className={style.body} >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmitHandler)}>
         <h1>What's your date of birth?</h1>
         <p>
           Choose your date of birth. You can also make this private later.{" "}
@@ -32,12 +34,12 @@ const router = useRouter()
         </p>
         <input
           type="date"
-          name="date"
-          value={data.date}
-          onChange={handleChange}
+          required
+          {...register("date")}
         />
+        <p>{errors.date?.message}</p>
         <br />
-        <button className={style.button} onClick={() => router.push("/gender") } >Next</button>
+        <button className={style.button}>Next</button>
       </form>
       </div>
   );
