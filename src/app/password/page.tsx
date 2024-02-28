@@ -1,24 +1,22 @@
 "use client";
 import { useRouter } from "next/navigation";
 import style from "./password.module.scss";
-import { useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Schema } from "./yupSchema";
+import { useForm } from "react-hook-form";
 export default function Password() {
-
   const router = useRouter();
 
-  const [password, setPassword] = useState({
-    password: "",
-  });
-
-  const handleChange = (e: any) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setPassword({ ...password, [name]: value });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ resolver: yupResolver(Schema) });
+  const onSubmitHandler = (data: any) => {
+    console.log({ data });
+    router.push("/save");
   };
-
-  const handleSubmit = (e:any) => {
-    e.preventDefault()
-  }
   return (
     <div className={style.body}>
       <div>
@@ -28,16 +26,16 @@ export default function Password() {
           be something that others can't guess.
         </h6>
       </div>
-      <div className={style.input} onSubmit={handleSubmit}>
+      <form className={style.input} onSubmit={handleSubmit(onSubmitHandler)}>
         <input
           type="password"
           placeholder="Password"
-          name="password"
-          value={password.password}
-          onChange={handleChange}
+          required
+          {...register("password")}
         />
-        <button onClick={() =>{router.push("/save")}}>Next</button>
-      </div>
+        <p>{errors.password?.message}</p>
+        <button>Next</button>
+      </form>
     </div>
   );
 }
