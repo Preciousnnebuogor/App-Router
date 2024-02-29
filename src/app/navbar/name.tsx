@@ -4,6 +4,7 @@ import style from "./name.module.scss";
 import { Schema } from "./yupSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 export default function Name() {
   const router = useRouter();
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import style from "./save.module.scss";
 
 export default function Save() {
+    
     return <div className={style.body}>
         <div>
             <h1>Save your login info?</h1>
