@@ -4,8 +4,15 @@ import style from "./password.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Schema } from "./yupSchema";
 import { useForm } from "react-hook-form";
+import {useState} from "react"
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 export default function Password() {
   const router = useRouter();
+
+  const [open, setOpen] = useState(false)
+  const toggle = () => {
+    setOpen(!open)
+  }
 
   const {
     register,
@@ -28,13 +35,21 @@ export default function Password() {
       </div>
       <form className={style.input} onSubmit={handleSubmit(onSubmitHandler)}>
         <input
-          type="password"
+          type={(open === false) ? "password": "text"}
           placeholder="Password"
           required
           {...register("password")}
         />
+        <div>
+          { 
+          (open === false) ? <AiFillEye onClick={toggle} />:
+          <AiFillEyeInvisible onClick={toggle} />
+           }
+        <AiFillEyeInvisible onClick={toggle} />
+        <AiFillEye onClick={toggle} />
+        </div>
         <p>{errors.password?.message}</p>
-        <button>Next</button>
+        <button>N ext</button>
       </form>
     </div>
   );
