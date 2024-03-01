@@ -25,28 +25,36 @@ export default function Name() {
         <h1>What's your name?</h1>
         <p>Enter the name you use in real life</p>
       </div>
-      <form className={style.input} onSubmit={handleSubmit(onSubmitHandler)}>
+      <form  onSubmit={handleSubmit(onSubmitHandler)}>
+
+        <div className={style.input}>
+
         <input
           type="text"
           required
           placeholder="First name"
           {...register("firstname")}
         />
-        <p>{errors.firstname?.message}</p>
+        <p style={{color:"red"}}>{errors.firstname?.message}</p>
+
         <input
           type="text"
           required
           {...register("middlename")}
           placeholder="Middle name"
         />
-        <p>{errors.middlename?.message}</p>
+        <p style={{color:"red"}}>{errors.middlename?.message}</p>
+
         <input
           type="text"
           required
           placeholder="Surname"
           {...register("surname")}
         />
-        <p>{errors.surname?.message}</p>
+        <p style={{color:"red"}}>{errors.surname?.message}</p>
+
+        </div>
+
         <br />
         <button className={style.button} type="submit">
           Next

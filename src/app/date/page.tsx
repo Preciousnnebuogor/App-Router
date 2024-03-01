@@ -9,6 +9,7 @@ import { Schema } from "./yupSchema";
 
 
 export default function DateOfBirth() {
+
 const router = useRouter()
 
 const {
@@ -19,26 +20,31 @@ const {
 } = useForm({ resolver: yupResolver(Schema) });
 const onSubmitHandler = (data: any) => {
   console.log({ data });
-  router.push("/gender");
+  router.push("/contact");
 };
 
   return (
     <div className={style.body} >
+
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <h1>What's your date of birth?</h1>
+
         <p>
           Choose your date of birth. You can also make this private later.{" "}
           <Link href={"/name"} className={style.Link}>
             Why do i need to provide my date of birth?
           </Link>
         </p>
+
         <input
           type="date"
           required
           {...register("date")}
         />
-        <p>{errors.date?.message}</p>
+        <p style={{color:"red"}}>{errors.date?.message}</p>
+
         <br />
+
         <button className={style.button}>Next</button>
       </form>
       </div>

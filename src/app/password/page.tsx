@@ -28,12 +28,15 @@ export default function Password() {
     <div className={style.body}>
       <div>
         <h1>Create a password</h1>
+
         <h6>
           Create a password with at least 6 letters or numbers. It should should
           be something that others can't guess.
         </h6>
       </div>
+
       <form onSubmit={handleSubmit(onSubmitHandler)}>
+
         <div className={style.feild}>
           <input
             type={open === false ? "password" : "text"}
@@ -50,8 +53,10 @@ export default function Password() {
             )}
           </div>
         </div>
-        <p>{errors.password?.message}</p>
+        <p style={{color:"red"}}>{errors.password?.message}</p>
+
         <button>N ext</button>
+
       </form>
     </div>
   );
