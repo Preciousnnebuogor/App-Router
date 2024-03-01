@@ -9,9 +9,9 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 export default function Password() {
   const router = useRouter();
 
-  const [open, setOpen] = useState<boolean>(false);
-  const toggleopen = () => {
-    setOpen((prevState) => !prevState);
+  const [open, setOpen] = useState(false);
+  const toggle = () => {
+    setOpen(!open);
   };
 
   const {
@@ -36,17 +36,17 @@ export default function Password() {
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <div className={style.feild}>
           <input
-            type={open ? "text" : "password"}
+            type={open === false ? "password" : "text"}
             placeholder="Password"
             required
             {...register("password")}
           />
 
           <div className={style.icon}>
-            {open ? (
-              <AiFillEye onClick={toggleopen} />
+            {open === false ? (
+              <AiFillEye onClick={toggle} />
             ) : (
-              <AiFillEyeInvisible onClick={toggleopen} />
+              <AiFillEyeInvisible onClick={toggle} />
             )}
           </div>
         </div>
@@ -56,4 +56,5 @@ export default function Password() {
     </div>
   );
 }
-// note to install react-hook-form
+    // Note: install the react-hook-icons 
+    // react-icons : select the icon you want and import 
