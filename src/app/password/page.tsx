@@ -4,15 +4,15 @@ import style from "./password.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Schema } from "./yupSchema";
 import { useForm } from "react-hook-form";
-import {useState} from "react"
+import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 export default function Password() {
   const router = useRouter();
 
-  const [open, setOpen] = useState(false)
-  const toggle = () => {
-    setOpen(!open)
-  }
+  const [open, setOpen] = useState<boolean>(false);
+  const toggleopen = () => {
+    setOpen((prevState) => !prevState);
+  };
 
   const {
     register,
@@ -33,20 +33,22 @@ export default function Password() {
           be something that others can't guess.
         </h6>
       </div>
-      <form className={style.input} onSubmit={handleSubmit(onSubmitHandler)}>
-        <input
-          type={(open === false) ? "password": "text"}
-          placeholder="Password"
-          required
-          {...register("password")}
-        />
-        <div>
-          { 
-          (open === false) ? <AiFillEye onClick={toggle} />:
-          <AiFillEyeInvisible onClick={toggle} />
-           }
-        <AiFillEyeInvisible onClick={toggle} />
-        <AiFillEye onClick={toggle} />
+      <form onSubmit={handleSubmit(onSubmitHandler)}>
+        <div className={style.feild}>
+          <input
+            type={open ? "text" : "password"}
+            placeholder="Password"
+            required
+            {...register("password")}
+          />
+
+          <div className={style.icon}>
+            {open ? (
+              <AiFillEye onClick={toggleopen} />
+            ) : (
+              <AiFillEyeInvisible onClick={toggleopen} />
+            )}
+          </div>
         </div>
         <p>{errors.password?.message}</p>
         <button>N ext</button>
@@ -54,3 +56,4 @@ export default function Password() {
     </div>
   );
 }
+// note to install react-hook-form
