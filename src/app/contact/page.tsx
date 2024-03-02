@@ -17,7 +17,7 @@ export default function Contact() {
   } = useForm({ resolver: yupResolver(Schema) });
   const onSubmitHandler = (data: any) => {
     console.log({ data });
-    router.push("/password");
+    router.push("/gender");
   };
 
   return (
