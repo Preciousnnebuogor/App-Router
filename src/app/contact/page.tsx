@@ -1,4 +1,5 @@
 "use client";
+// remember x icon on the contact input
 import Link from "next/link";
 import style from "./contact.module.scss";
 import { useRouter } from "next/navigation";
