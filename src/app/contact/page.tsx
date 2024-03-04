@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Schema } from "./yupSchema";
+import { ImCancelCircle } from "react-icons/im";
 
 export default function Contact() {
   const router = useRouter();
-
+ 
   const {
     register,
     handleSubmit,
@@ -31,6 +32,7 @@ export default function Contact() {
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmitHandler)}>
+        <div className={style.icon}>
         <div className={style.form}>
           <input
             type="tel"
@@ -38,6 +40,8 @@ export default function Contact() {
             placeholder="Mobile number"
             {...register("contact")}
           />
+          <ImCancelCircle />
+          </div>
           <p style={{color:"red"}}>{errors.contact?.message}</p>
           <h5>
             You'll also recieve SMS notifications from us and can opt out at any
