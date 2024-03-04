@@ -7,13 +7,21 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Schema } from "./yupSchema";
 import { ImCancelCircle } from "react-icons/im";
+import { useState } from "react";
 
 export default function Contact() {
   const router = useRouter();
- 
+
+  const [message, setMessage] = useState("")
+  const handleClick = ()=> {
+    setValue("contact" , "");
+  }
+
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     reset,
   } = useForm({ resolver: yupResolver(Schema) });
@@ -21,6 +29,8 @@ export default function Contact() {
     console.log({ data });
     router.push("/gender");
   };
+
+  
 
   return (
     <div className={style.body}>
@@ -40,7 +50,7 @@ export default function Contact() {
             placeholder="Mobile number"
             {...register("contact")}
           />
-          <ImCancelCircle />
+          <ImCancelCircle onClick={handleClick}  />
           </div>
           <p style={{color:"red"}}>{errors.contact?.message}</p>
           <h5>
