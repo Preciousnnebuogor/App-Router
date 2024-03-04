@@ -55,7 +55,7 @@ export default function Password() {
         </div>
         <p style={{color:"red"}}>{errors.password?.message}</p>
 
-        <button>N ext</button>
+        <button>Next</button>
 
       </form>
     </div>

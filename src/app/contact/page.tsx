@@ -12,11 +12,10 @@ import { useState } from "react";
 export default function Contact() {
   const router = useRouter();
 
-  const [message, setMessage] = useState("")
-  const handleClick = ()=> {
-    setValue("contact" , "");
-  }
-
+  const [message, setMessage] = useState("");
+  const handleClick = () => {
+    setValue("contact", "");
+  };
 
   const {
     register,
@@ -30,8 +29,6 @@ export default function Contact() {
     router.push("/gender");
   };
 
-  
-
   return (
     <div className={style.body}>
       <div className={style.text}>
@@ -42,17 +39,21 @@ export default function Contact() {
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmitHandler)}>
-        <div className={style.icon}>
-        <div className={style.form}>
-          <input
-            type="tel"
-            required
-            placeholder="Mobile number"
-            {...register("contact")}
-          />
-          <ImCancelCircle onClick={handleClick}  />
+        
+          <div className={style.form}>
+            <input
+              type="number"
+              required
+              
+              placeholder="Mobile number"
+              {...register("contact")}
+            />
+            <div className={style.icon}>
+            <ImCancelCircle onClick={handleClick} />
           </div>
-          <p style={{color:"red"}}>{errors.contact?.message}</p>
+          </div>
+
+          <p style={{ color: "red" }}>{errors.contact?.message}</p>
           <h5>
             You'll also recieve SMS notifications from us and can opt out at any
             time.{" "}
@@ -60,7 +61,7 @@ export default function Contact() {
               Learn more
             </Link>
           </h5>
-        </div>
+        
 
         <button className={style.button}>Next</button>
 

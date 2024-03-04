@@ -1,5 +1,5 @@
 .body {
-    padding-top: 40px;
+  padding-top: 40px;
   margin-left: 20px;
 
   h1 {
@@ -12,40 +12,61 @@
     margin-bottom: 10px;
   }
 
-  input {
-    width: 50%;
-    border-radius: 20px;
-    justify-content: space-between;
+  .form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
     margin: 10px;
+    width: 50%;
+    border-radius: 20px;
+    background-color: white;
   }
 
-  h4{
-    margin-top: 10px;
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
   }
-    .Link{
-        color: #0866ff;
+
+  input {
+    border: none; 
+    outline:none;
     }
 
-    .button {
-        border-radius: 20px;
-        background-color: #0866ff;
-        width: 50%;
-        align-items: center;
-        margin-top: 20px;
-        padding: 10px;
-        color: white;
-      }
+    .icon{
+      padding-left: 50%;
+      
+       
+    }
 
-      .button2 {
-            border-radius: 20px;
-            font-weight: 500;
-            width: 50%;
-            align-items: center;
-            margin-top: 20px;
-            padding: 10px;
-            color: black;
-            border: 1px solid grey;
-      }
-  
+  h4 {
+    margin-top: 10px;
+  }
+  .Link {
+    color: #0866ff;
+  }
+
+  .button {
+    border-radius: 20px;
+    background-color: #0866ff;
+    width: 50%;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    color: white;
+  }
+
+  .button2 {
+    border-radius: 20px;
+    font-weight: 500;
+    width: 50%;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    color: black;
+    border: 1px solid grey;
+  }
 }
